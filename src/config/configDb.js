@@ -1,5 +1,5 @@
 const oracledb = require('oracledb');
-oracledb.initOracleClient({libDir:'C:\\MisAplicaciones\\instantclient_23_5'});
+oracledb.initOracleClient({libDir:'C:\\OtrasAplicaciones\\instantclient_23_8'});
 
 database = {
     user: "HUSRT",
