@@ -153,7 +153,6 @@ where 1=1 and a.ap_ahd = 'A1'and a.ap_date between to_date('` + req.body.fechaI 
     Cites = [];
     previouscite = {}
     result.rows.map(cite => {
-        if (cite[19] == "CONSULTA EXTERNA") {
             let userSchema = {
                 "id_Unico": cite[0],
                 "tipo_ID": cite[1],
@@ -193,17 +192,9 @@ where 1=1 and a.ap_ahd = 'A1'and a.ap_date between to_date('` + req.body.fechaI 
                 "nom_Usu_Adiciono_Cita": cite[35],
                 "observaciones": cite[36]
             }
-
-            if (previouscite == {}) {
                 Cites.push(userSchema);
-            } else if ((previouscite.Num_de_Identificacion != userSchema.Num_de_Identificacion && previouscite.EX_CODE != userSchema)
-                || (previouscite.Num_de_Identificacion != userSchema.Num_de_Identificacion && previouscite.EX_CODE == userSchema.EX_CODE)
-                || (previouscite.Num_de_Identificacion == userSchema.Num_de_Identificacion && previouscite.EX_CODE != userSchema.EX_CODE)) {
-                Cites.push(userSchema);
-            }
-            previouscite = userSchema;
         }
-    })
+    )
 
     res.json(Cites);
 })
